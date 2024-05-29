@@ -1,0 +1,52 @@
+#include <stdio.h>
+#define FILAS 9  // Definimos una constante para el número de filas
+#define COLUMNAS 9  // Definimos una constante para el número de columnas
+
+int main() {
+    int matriz[FILAS][COLUMNAS];  // Declaramos una matriz de 9x9
+    int numeroInicial;  // Variable para el número inicial
+    int numeroBuscar;  // Variable para el número a buscar
+    int encontrado = 0;  // Variable para indicar si el número fue encontrado
+    int fila, columna;  // Variables para almacenar la posición encontrada
+
+    // Pedimos al usuario el número inicial para llenar la matriz
+    printf("Ingrese el número inicial para llenar la matriz: ");
+    scanf("%d", &numeroInicial);
+
+    // Llenamos la matriz con números secuenciales a partir del número inicial
+    int i, j;  // Declaramos las variables de los bucles
+    for (i = 0; i < FILAS; i++) {
+        for (j = 0; j < COLUMNAS; j++) {
+            matriz[i][j] = numeroInicial;
+            numeroInicial++;
+        }
+    }
+
+    // Pedimos al usuario el número a buscar en la matriz
+    printf("Ingrese el número a buscar en la matriz: ");
+    scanf("%d", &numeroBuscar);
+
+    // Buscamos el número en la matriz
+    for (i = 0; i < FILAS; i++) {
+        for (j = 0; j < COLUMNAS; j++) {
+            if (matriz[i][j] == numeroBuscar) {
+                encontrado = 1;  // Indicamos que el número fue encontrado
+                fila = i;  // Guardamos la fila donde se encontró
+                columna = j;  // Guardamos la columna donde se encontró
+                break;  // Salimos del bucle ya que encontramos el número
+            }
+        }
+        if (encontrado) {
+            break;  // Salimos del bucle exterior si encontramos el número
+        }
+    }
+
+    // Verificamos si el número fue encontrado y mostramos el resultado
+    if (encontrado) {
+        printf("Valor encontrado en la posición [%d][%d]\n", fila, columna);
+    } else {
+        printf("No encontrado\n");
+    }
+
+    return 0;  // Terminamos la ejecución del programa
+}
