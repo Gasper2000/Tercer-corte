@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+// Definimos la estructura
+struct Estudiante {
+    int id;     // Campo id
+    float NOTA1; // Campo NOTA1
+    float NOTA2; // Campo NOTA2
+};
+
+int main() {
+    // Inicializamos la estructura con valores predefinidos
+    struct Estudiante estudiantes[3] = {
+        {1, 45.5, 40.0},
+        {2, 38.0, 42.5},
+        {3, 32.0, 28.0}
+    };
+
+    float valorBuscar;  // Variable para el valor a buscar
+    bool encontrado = false;  // Variable para indicar si el valor fue encontrado
+    int posicion;  // Variable para almacenar la posición encontrada
+
+    // Pedimos al usuario el valor a buscar en NOTA1
+    printf("Ingrese el valor a buscar en NOTA1: ");
+    scanf("%f", &valorBuscar);
+
+    // Buscamos el valor en el campo NOTA1 de la estructura
+    int i;  // Declaramos la variable del bucle
+    for (i = 0; i < 3; i++) {
+        if (estudiantes[i].NOTA1 == valorBuscar) {
+            encontrado = true;  // Indicamos que el valor fue encontrado
+            posicion = i;  // Guardamos la posición donde se encontró
+            break;  // Salimos del bucle ya que encontramos el valor
+        }
+    }
+
+    // Verificamos si el valor fue encontrado y mostramos el resultado
+    if (encontrado) {
+        printf("Valor encontrado en la posición %d\n", posicion);
+        printf("ID: %d, NOTA1: %.2f, NOTA2: %.2f\n", estudiantes[posicion].id, estudiantes[posicion].NOTA1, estudiantes[posicion].NOTA2);
+    } else {
+        printf("No encontrado\n");
+    }
+
+    return 0;  // Terminamos la ejecución del programa
+}
