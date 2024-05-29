@@ -1,0 +1,42 @@
+#include <stdio.h>
+#define TAMANO 88  // Definimos una constante para el tamaño del arreglo
+
+int main() {
+    int arreglo[TAMANO];  // Declaramos un arreglo de tamaño 88
+    int numeroInicial;    // Variable para el número inicial
+    int numeroBuscar;     // Variable para el número a buscar
+    int encontrado = 0;   // Variable para indicar si el número fue encontrado
+    int posicion;         // Variable para almacenar la posición encontrada
+
+    // Pedimos al usuario el número inicial para llenar el arreglo
+    printf("Ingrese el número inicial para llenar el arreglo: ");
+    scanf("%d", &numeroInicial);
+
+    // Llenamos el arreglo con números secuenciales a partir del número inicial
+    int i; // Declaramos la variable del bucle
+    for (i = 0; i < TAMANO; i++) {
+        arreglo[i] = numeroInicial + i;
+    }
+
+    // Pedimos al usuario el número a buscar en el arreglo
+    printf("Ingrese el número a buscar en el arreglo: ");
+    scanf("%d", &numeroBuscar);
+
+    // Buscamos el número en el arreglo
+    for (i = 0; i < TAMANO; i++) {
+        if (arreglo[i] == numeroBuscar) {
+            encontrado = 1;      // Indicamos que el número fue encontrado
+            posicion = i;        // Guardamos la posición donde se encontró
+            break;               // Salimos del bucle ya que encontramos el número
+        }
+    }
+
+    // Verificamos si el número fue encontrado y mostramos el resultado
+    if (encontrado) {
+        printf("Valor encontrado en la posición %d\n", posicion);
+    } else {
+        printf("No encontrado\n");
+    }
+
+    return 0;  // Terminamos la ejecución del programa
+}
